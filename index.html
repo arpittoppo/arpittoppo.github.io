@@ -269,14 +269,21 @@
       if(ent.isIntersecting) ent.target.classList.add('in-view');
     });
   },{threshold:0.15});
-  document.querySelectorAll('section,.skill,.cert').forEach(el=>obs.observe(el));
-<!-- Cloudflare Analytics (optional, keep below if used) -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script>
+  document.querySelectorAll('section,.skill,.cert').forEach(el=>obs.observe(el));
+<!-- Feedback Widget -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' }
 </script>
+<script type="module" src="https://feedback-widget-weld.vercel.app/feedback-widget.js"></script>
+<!-- Display feedback form -->
+<div class="my-10 text-center">
+  <feedback-widget projectId="407" websiteName="ArpitToppoPortfolio"></feedback-widget>
+</div>
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
+
 
 
 
