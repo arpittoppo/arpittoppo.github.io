@@ -29,22 +29,37 @@
   .wrap{max-width:var(--maxw);width:100%;}
 
   /* Header layout */
-  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;}
-  .brand{display:flex;align-items:center;gap:16px;}
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:40px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
   .logo{
     width:64px;height:64px;
     background:radial-gradient(circle at top left,var(--accent-2),var(--accent));
     border-radius:14px;
     display:grid;place-items:center;
-    font-weight:800;font-size:22px;color:#042422;
+    font-weight:800;font-size:22px;
+    color:#042422;
     box-shadow:0 0 25px rgba(0,191,165,0.35),0 0 10px rgba(87,199,227,0.25);
     border:2px solid rgba(255,255,255,0.08);
   }
   .brand-text h1{font-size:2.1rem;margin:0;}
   .brand-text .subtitle{color:var(--muted);margin-top:6px;font-size:1rem;}
 
-  nav{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
-  nav a{color:var(--muted);text-decoration:none;font-size:1rem;padding:8px 12px;border-radius:8px;transition:all .2s var(--ease);}
+  /* Navigation centered */
+  nav{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;} /* Added margin-bottom for spacing */
+  nav a{
+    color:var(--muted);text-decoration:none;font-size:1rem;padding:8px 12px;
+    border-radius:8px;transition:all .2s var(--ease);
+  }
   nav a:hover,nav a.active{color:var(--accent);background:rgba(255,255,255,0.03);}
 
   /* Sections */
@@ -57,57 +72,82 @@
     transition:transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
     opacity:0;transform:translateY(15px) scale(0.99);
   }
-  #home{margin-top:40px;}
+  #home{margin-top:40px;} /* Added space between nav and Welcome section */
   section.in-view{opacity:1;transform:translateY(0) scale(1);}
-  section:hover{box-shadow:0 16px 38px rgba(0,191,165,0.07),0 8px 20px var(--highlight);transform:translateY(-6px);}
+  section:hover{
+    box-shadow:0 16px 38px rgba(0,191,165,0.07),0 8px 20px var(--highlight);
+    transform:translateY(-6px);
+  }
   h2{font-size:1.7rem;margin-bottom:12px;}
   p{color:var(--muted);font-size:1.05rem;line-height:1.6;}
 
-  .btn{display:inline-block;margin-top:16px;padding:12px 20px;border-radius:10px;
-       background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#062422;
-       font-weight:700;text-decoration:none;font-size:1rem;}
+  /* Buttons */
+  .btn{
+    display:inline-block;
+    margin-top:16px;
+    padding:12px 20px;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#062422;
+    font-weight:700;
+    text-decoration:none;
+    font-size:1rem;
+  }
 
   /* Skills */
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:16px;}
-  .skill{background:rgba(255,255,255,0.01);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.02);
-         transform-origin:center;transition:transform 0.3s var(--ease),box-shadow 0.3s var(--ease);
-         opacity:0;transform:translateY(10px) scale(0.98);}
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;margin-top:16px;
+  }
+  .skill{
+    background:rgba(255,255,255,0.01);
+    border-radius:12px;
+    padding:16px;
+    border:1px solid rgba(255,255,255,0.02);
+    transform-origin:center;
+    transition:transform 0.3s var(--ease),box-shadow 0.3s var(--ease);
+    opacity:0;transform:translateY(10px) scale(0.98);
+  }
   .skill.in-view{opacity:1;transform:translateY(0) scale(1);}
-  .skill:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 18px 40px rgba(0,191,165,0.07),0 8px 24px var(--highlight);}
+  .skill:hover{
+    transform:translateY(-6px) scale(1.03);
+    box-shadow:0 18px 40px rgba(0,191,165,0.07), 0 8px 24px var(--highlight);
+  }
   .skill h4{font-size:1.1rem;margin-bottom:6px;}
   .skill p{color:var(--muted);font-size:0.96rem;}
 
-  /* Certificates */
-  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:18px;}
-  .cert{
-    background:rgba(255,255,255,0.01);
-    border-radius:12px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,0.03);
-    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
-    opacity:0;transform:translateY(10px) scale(0.98);
-  }
-  .cert.in-view{opacity:1;transform:translateY(0) scale(1);}
-  .cert:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 18px 40px rgba(0,191,165,0.07),0 8px 24px var(--highlight);}
-  .cert img{width:100%;height:180px;object-fit:cover;display:block;border-bottom:1px solid rgba(255,255,255,0.05);}
-  .cert-content{padding:16px;}
-  .cert h4{margin-bottom:6px;font-size:1.1rem;}
-  .cert p{font-size:0.96rem;margin-bottom:10px;}
-  .cert small{color:var(--muted);font-size:0.9rem;}
-
   /* Contact */
   form{display:flex;flex-direction:column;gap:12px;margin-top:14px;}
-  input,textarea,button{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);
-                        background:rgba(255,255,255,0.02);color:inherit;font-size:1rem;}
+  input,textarea,button{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:rgba(255,255,255,0.02);
+    color:inherit;
+    font-size:1rem;
+  }
   textarea{min-height:120px;resize:vertical;}
   .row{display:flex;gap:12px;}
   .row input{flex:1;}
-  button{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#042427;border:0;font-weight:700;cursor:pointer;}
+  button{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#042427;
+    border:0;
+    font-weight:700;
+    cursor:pointer;
+  }
 
+  /* Footer */
   footer{text-align:center;color:var(--muted);font-size:0.95rem;margin-top:20px;}
   footer a{color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
   footer svg{width:18px;height:18px;fill:var(--accent);transition:fill 0.2s;}
   footer a:hover svg{fill:var(--accent-2);}
+  .linkedin-icon{
+    width:22px;height:22px;margin-left:8px;fill:var(--accent);vertical-align:middle;transition:fill 0.2s;
+  }
+  .linkedin-icon:hover{fill:var(--accent-2);}
 </style>
 </head>
 <body>
@@ -120,8 +160,9 @@
           <div class="subtitle">Cybersecurity Student | Red Team Enthusiast | Web Penetration Tester</div>
         </div>
       </div>
+
       <a href="https://www.linkedin.com/in/arpittoppo/" target="_blank" title="LinkedIn">
-        <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:24px;height:24px;fill:var(--accent)">
+        <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 
           5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 
           19h-3v-9h3v9zm-1.5-10.29c-.97 
@@ -137,28 +178,31 @@
     </header>
 
     <nav id="nav">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" data-target="home">Home</a>
+      <a href="#about" data-target="about">About</a>
+      <a href="#skills" data-target="skills">Skills</a>
+      <a href="#contact" data-target="contact">Contact</a>
     </nav>
 
     <!-- HOME -->
     <section id="home">
       <h2>Welcome</h2>
-      <p>Hi, I’m <strong>Arpit Toppo</strong> — a cybersecurity student currently pursuing my <strong>BCA (2nd year)</strong> with a specialization in Cybersecurity at <strong>JECRC University</strong>.  
-      My focus is on <strong>red teaming</strong>, <strong>bug hunting</strong>, and <strong>application security</strong>.  
-      I enjoy exploring both offensive and defensive sides of cybersecurity — learning exploitation, evasion, and secure software practices in safe lab environments.</p>
+      <p>
+        Hi, I’m <strong>Arpit Toppo</strong> — a cybersecurity student currently pursuing my <strong>BCA (2nd year)</strong> with a specialization in Cybersecurity at <strong>JECRC University</strong>.  
+        My focus is on <strong>red teaming</strong>, <strong>bug hunting</strong>, and <strong>application security</strong>.  
+        I enjoy exploring both offensive and defensive sides of cybersecurity — learning exploitation, evasion, and secure software practices in safe lab environments.
+      </p>
       <a class="btn" href="#contact">Get in Touch</a>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
       <h2>About Me</h2>
-      <p>I’m passionate about ethical hacking, red teaming, and continuous learning in cybersecurity.  
-      I work with tools like <strong>Kali Linux</strong>, <strong>Burp Suite</strong>,and have experience experimenting with <strong>C2 frameworks</strong> such as Sliver, Mythic, StarKiller, and Havoc for controlled lab research.  
-      My goal is to become a skilled red team operator who understands both technical depth and ethical responsibility in the field.</p>
+      <p>
+        I’m passionate about ethical hacking, red teaming, and continuous learning in cybersecurity.  
+        I work with tools like <strong>Kali Linux</strong>, <strong>Burp Suite</strong>,and have experience experimenting with <strong>C2 frameworks</strong> such as Sliver, Mythic, StarKiller, and Havoc for controlled lab research.  
+        My goal is to become a skilled red team operator who understands both technical depth and ethical responsibility in the field.
+      </p>
       <a class="btn" href="https://drive.google.com/YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" rel="noopener">View Resume</a>
     </section>
 
@@ -166,45 +210,29 @@
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="skill"><h4>Offensive Security</h4><p>Red teaming workflows, controlled testing, and ethical exploitation methodologies.</p></div>
-        <div class="skill"><h4>Web & AppSec</h4><p>OWASP Top 10, XSS, SSRF, IDOR, server misconfigurations and web penetration testing.</p></div>
-        <div class="skill"><h4>Tools & Platforms</h4><p>Kali Linux, Burp Suite Pro, PowerShell, Go, SharpCollection — practical tooling for pentesting.</p></div>
-        <div class="skill"><h4>C2 & Payload Development</h4><p>StarKiller, Havoc, Sliver, Mythic — worked on encryption + obfuscation payloads and AV bypass techniques (lab-only, ethical research).</p></div>
-        <div class="skill"><h4>Privilege Escalation</h4><p>Registry persistence, UAC research, DLL hijacking, service misconfigurations and escalation techniques (lab safe testing).</p></div>
-        <div class="skill"><h4>Reporting & Documentation</h4><p>Clear PoCs, responsible disclosure, structured bug reports and impact analysis.</p></div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section id="certificates">
-      <h2>Certificates & Achievements</h2>
-      <div class="cert-grid">
-        <div class="cert">
-          <img src="assets/images/certificates/ecss.png" alt="EC-Council Certificate">
-          <div class="cert-content">
-            <h4>EC-Council Certified Security Specialist (ECSS)</h4>
-            <small>Issued by: EC-Council</small>
-            <p>Recognized certification demonstrating knowledge in fundamental cybersecurity concepts, including network defense, ethical hacking, and security operations.</p>
-            <a class="btn" href="https://drive.google.com/file/d/1M1nCScHO3_2Kq_ANo0TpsD4SkxfJHyv7/view?usp=sharing" target="_blank">View Certificate</a>
-          </div>
+        <div class="skill">
+          <h4>Offensive Security</h4>
+          <p>Red teaming workflows, controlled testing, and ethical exploitation methodologies.</p>
         </div>
-        <div class="cert">
-          <img src="assets/images/certificates/acc.png" alt="Cybersecurity Internship Certificate">
-          <div class="cert-content">
-            <h4>Cybersecurity Internship</h4>
-            <small>Issued by: Academor</small>
-            <p>Completed a 2-month internship in Cybersecurity from Oct–Nov 2024, gaining hands-on exposure to threat analysis and practical security tasks.</p>
-            <a class="btn" href="https://drive.google.com/file/d/1cuAW47IBvMUGrQ8bFmGRzWbDtjRpwRUi/view?usp=sharing" target="_blank">View Certificate</a>
-          </div>
+        <div class="skill">
+          <h4>Web & AppSec</h4>
+          <p>OWASP Top 10, XSS, SSRF, IDOR, server misconfigurations and web penetration testing.</p>
         </div>
-        <div class="cert">
-          <img src="assets/images/certificates/out.png" alt="Outskill Generative AI Certificate">
-          <div class="cert-content">
-            <h4>Generative AI Mastermind</h4>
-            <small>Issued by: Outskill (GrowthSchool)</small>
-            <p>Completed an industry-level program on Generative AI, learning prompt engineering, model optimization, and AI-driven productivity techniques.</p>
-            <a class="btn" href="https://drive.google.com/file/d/1TjPCoUiVmzN8F4uYUv4tnLYWtQKMzV7Q/view?usp=sharing" target="_blank">View Certificate</a>
-          </div>
+        <div class="skill">
+          <h4>Tools & Platforms</h4>
+          <p>Kali Linux, Burp Suite Pro, PowerShell, Go, SharpCollection — practical tooling for pentesting.</p>
+        </div>
+        <div class="skill">
+          <h4>C2 & Payload Development</h4>
+          <p>StarKiller, Havoc, Sliver, Mythic — worked on encryption + obfuscation payloads and AV bypass techniques (lab-only, ethical research).</p>
+        </div>
+        <div class="skill">
+          <h4>Privilege Escalation</h4>
+          <p>Registry persistence, UAC research, DLL hijacking, service misconfigurations and escalation techniques (lab safe testing).</p>
+        </div>
+        <div class="skill">
+          <h4>Reporting & Documentation</h4>
+          <p>Clear PoCs, responsible disclosure, structured bug reports and impact analysis.</p>
         </div>
       </div>
     </section>
@@ -238,10 +266,12 @@
           0-1.83 1.24-1.83 2.53v4.86h-3v-9h2.88v1.23h.04c.4-.76 
           1.38-1.55 2.84-1.55 3.04 0 3.6 2 3.6 
           4.59v4.73z"/>
-        </svg> LinkedIn
+        </svg>
+        LinkedIn
       </a>
     </footer>
   </div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   const navLinks=document.querySelectorAll('nav a');
@@ -268,32 +298,8 @@
       if(ent.isIntersecting) ent.target.classList.add('in-view');
     });
   },{threshold:0.15});
-  document.querySelectorAll('section,.skill,.cert').forEach(el=>obs.observe(el));
+  document.querySelectorAll('section,.skill').forEach(el=>obs.observe(el));
 </script>
-
-<!-- ✅ Feedback Widget (placed OUTSIDE your script) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { darkMode: 'class' }
-</script>
-<script type="module" src="https://feedback-widget-weld.vercel.app/feedback-widget.js"></script>
-
-<div class="my-10 text-center">
-  <feedback-widget projectId="407" websiteName="ArpitToppoPortfolio"></feedback-widget>
-</div>
-
-<!-- ✅ Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script>
-
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
