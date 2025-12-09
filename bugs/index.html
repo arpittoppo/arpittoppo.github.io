@@ -100,5 +100,21 @@
   <a href="../index.html" class="back">← Back to Portfolio</a>
 
 </div>
+  <script>
+  // Disable any inherited click interception so external links work normally
+  document.addEventListener("click", function(e) {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    // Allow all non-hash links (external or page navigation)
+    if (!href.startsWith("#")) {
+      e.stopImmediatePropagation();
+      return true;
+    }
+  }, true);
+</script>
 </body>
 </html>
