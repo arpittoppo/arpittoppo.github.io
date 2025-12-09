@@ -379,37 +379,51 @@
 
   const navLinks = document.querySelectorAll('nav a');
 
+  /* ---------- ACTIVE NAV HIGHLIGHT (INTERNAL SECTIONS ONLY) ---------- */
   function setActive(){
     const scrollY = window.scrollY + 120;
-    navLinks.forEach(link=>{
-      const id = link.getAttribute('href').slice(1);
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+
+      // Only apply active logic for section IDs (#)
+      if (!href.startsWith("#")) {
+        link.classList.remove('active');
+        return;
+      }
+
+      const id = href.slice(1);
       const sec = document.getElementById(id);
-      if(sec && sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY)
+
+      if (sec && sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY) {
         link.classList.add('active');
-      else link.classList.remove('active');
+      } else {
+        link.classList.remove('active');
+      }
     });
   }
 
   window.addEventListener('scroll', setActive);
 
- navLinks.forEach(a=>{
-  a.addEventListener('click', e => {
-    const href = a.getAttribute('href');
 
-    // If it's an external link (like /bugs/index.html), allow normal navigation
-    if (!href.startsWith("#")) return;
+  /* ---------- SMOOTH SCROLL (INTERNAL LINKS ONLY) ---------- */
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
 
-    // Otherwise handle smooth scrolling
-    e.preventDefault();
-    const id = href.slice(1);
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+      // External links → allow default browser navigation
+      if (!href.startsWith("#")) return;
+
+      // Internal section scroll
+      e.preventDefault();
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
   });
-});
 
 
+  /* ---------- FADE-IN OBSERVER ---------- */
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(ent=>{
       if(ent.isIntersecting) ent.target.classList.add('in-view');
@@ -420,12 +434,14 @@
     .forEach(el=>obs.observe(el));
 </script>
 
+
 <!-- Cloudflare Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
 data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script>
 
 </body>
 </html>
+
 
 
 
