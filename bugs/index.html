@@ -1,1 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bug Findings — Arpit Toppo</title>
+
+<style>
+  body{
+    background:#071319;
+    font-family:Inter, system-ui, sans-serif;
+    color:#e6f2f5;
+    padding:40px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .container{
+    max-width:900px;
+    margin:auto;
+  }
+  h1{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:30px;
+  }
+
+  /* Bug Cards */
+  .bug-card{
+    background:#0d1620;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:25px;
+    border:1px solid rgba(255,255,255,0.05);
+    display:flex;
+    gap:20px;
+    transition:0.3s;
+  }
+  .bug-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 38px rgba(0,191,165,0.07),
+               0 8px 20px rgba(36,161,212,0.14);
+  }
+  .bug-img{
+    width:160px;
+    height:120px;
+    border-radius:10px;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,0.05);
+  }
+  .bug-content h3{
+    margin:0 0 8px 0;
+    font-size:1.3rem;
+  }
+  .bug-content p{
+    color:#9fb0bb;
+    line-height:1.5;
+    margin-bottom:12px;
+  }
+  .btn{
+    display:inline-block;
+    padding:10px 16px;
+    background:linear-gradient(90deg,#00bfa5,#57c7e3);
+    color:#042422;
+    font-weight:700;
+    border-radius:10px;
+    text-decoration:none;
+  }
+
+  .back{
+    display:block;
+    margin-top:35px;
+    text-align:center;
+    color:#57c7e3;
+    text-decoration:none;
+    font-size:1.1rem;
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>My Bug Findings & Writeups</h1>
+
+  <!-- ===== BUG CARD TEMPLATE ===== -->
+  <!-- Duplicate this block for each Medium article -->
+
+  <div class="bug-card">
+    <img src="../assets/images/bugs/bug1.png" class="bug-img">
+    <div class="bug-content">
+      <h3>SSRF Vulnerability Exploitation</h3>
+      <p>
+        Found an SSRF vulnerability allowing internal IP probing and metadata endpoint access.
+        Successfully demonstrated internal resource exposure via manipulated Host parameters.
+      </p>
+      <a href="https://medium.com/@syz_/chasing-an-ssrf-that-ended-up-leaking-internal-cloud-infrastructure-data-c5c75808e8f5" class="btn" target="_blank">Read Full Write-Up</a>
+    </div>
+  </div>
+
+  <div class="bug-card">
+    <img src="../assets/images/bugs/bug2.png" class="bug-img">
+    <div class="bug-content">
+      <h3>IDOR Leading to Unauthorized Data Access</h3>
+      <p>
+        Identified an IDOR flaw that exposed private user data through predictable IDs.
+        Demonstrated unauthorized access and recommended secure object reference checks.
+      </p>
+      <a href="YOUR_MEDIUM_LINK" class="btn" target="_blank">Read Full Write-Up</a>
+    </div>
+  </div>
+
+  <!-- ADD MORE CARDS HERE -->
+
+  <a href="../index.html" class="back">← Back to Portfolio</a>
+
+</div>
+</body>
+</html>
 
