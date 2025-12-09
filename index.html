@@ -392,13 +392,23 @@
 
   window.addEventListener('scroll', setActive);
 
-  navLinks.forEach(a=>{
-    a.addEventListener('click', e=>{
-      e.preventDefault();
-      const id = a.getAttribute('href').slice(1);
-      document.getElementById(id).scrollIntoView({behavior:'smooth'});
-    });
+ navLinks.forEach(a=>{
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+
+    // If it's an external link (like /bugs/index.html), allow normal navigation
+    if (!href.startsWith("#")) return;
+
+    // Otherwise handle smooth scrolling
+    e.preventDefault();
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
+});
+
 
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(ent=>{
@@ -416,6 +426,7 @@ data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script>
 
 </body>
 </html>
+
 
 
 
