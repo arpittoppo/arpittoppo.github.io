@@ -498,7 +498,7 @@
 
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
@@ -582,9 +582,162 @@
       border-color: var(--accent);
     }
 
+    /* ─── ACHIEVEMENTS ─── */
+    #achievements {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .achievement-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      max-width: 700px;
+    }
+
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent3), var(--accent2), transparent);
+    }
+
+    .achievement-card:hover {
+      border-color: rgba(240,192,64,0.4);
+      box-shadow: 0 0 40px rgba(240,192,64,0.07);
+      transform: translateY(-3px);
+    }
+
+    .achievement-trophy {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(0 0 16px rgba(240,192,64,0.5));
+    }
+
+    .achievement-event {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent3);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .achievement-title {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .achievement-place {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: #000;
+      background: var(--accent3);
+      padding: 5px 14px;
+      border-radius: 2px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 20px rgba(240,192,64,0.3);
+    }
+
+    .achievement-desc {
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.8;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .achievement-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .achievement-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent3);
+      text-decoration: none;
+      letter-spacing: 1px;
+      border: 1px solid rgba(240,192,64,0.3);
+      padding: 7px 14px;
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .achievement-link:hover {
+      background: rgba(240,192,64,0.08);
+      border-color: var(--accent3);
+      box-shadow: 0 0 16px rgba(240,192,64,0.15);
+    }
+
+    /* Achievement photo */
+    .achievement-photo-wrap {
+      position: relative;
+    }
+
+    .achievement-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid rgba(240,192,64,0.2);
+      display: block;
+      box-shadow: 0 0 30px rgba(240,192,64,0.08);
+    }
+
+    .achievement-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      border: 1px dashed rgba(240,192,64,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(240,192,64,0.03);
+      color: var(--text-dim);
+    }
+
+    .achievement-photo-placeholder span {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(240,192,64,0.5);
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .achievement-photo-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(240,192,64,0.5);
+      letter-spacing: 1px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
     /* ─── CONTACT ─── */
     #contact {
-      background: var(--bg2);
+      background: var(--bg);
       border-top: 1px solid var(--border);
     }
 
@@ -701,6 +854,7 @@
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .certs-grid { grid-template-columns: 1fr; }
+      .achievement-card { grid-template-columns: 1fr; }
       .hero-corner { display: none; }
       footer { padding: 24px 32px; }
     }
@@ -708,6 +862,7 @@
       .skills-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hero-stats { flex-direction: column; gap: 24px; }
+      .certs-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -724,6 +879,7 @@
     <li><a href="#skills">skills</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#certificates">certs</a></li>
+    <li><a href="#achievements">achievements</a></li>
     <li><a href="bugs/index.html">bug findings</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
@@ -752,12 +908,11 @@
   <div class="btn-group">
     <a href="#contact" class="btn btn-primary">Get in Touch</a>
     <a href="https://drive.google.com/file/d/1UJw-51eD-AiXed62rVvsQxN7dXBNJA4T/view?usp=sharing" target="_blank" class="btn btn-outline">View Resume</a>
-    
   </div>
 
   <div class="hero-stats">
     <div>
-      <div class="stat-num">3+</div>
+      <div class="stat-num">4+</div>
       <div class="stat-label">CERTIFICATIONS</div>
     </div>
     <div>
@@ -783,7 +938,7 @@
     <div class="about-text fade-in">
       <p>
         I'm passionate about <strong>ethical hacking</strong>, red teaming, and continuous
-        learning in cybersecurity. Currently in my 2nd year of BCA at JECRC University
+        learning in cybersecurity. Currently in my 3rd year of BCA at JECRC University
         with a specialization in Cybersecurity.
       </p>
       <p>
@@ -812,7 +967,7 @@
         <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Arpit Toppo"</span>,</span></div>
         <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Red Team Enthusiast"</span>,</span></div>
         <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-val">"BCA @ JECRC"</span>,</span></div>
-        <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"year"</span>: <span class="t-val">2</span>,</span></div>
+        <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"year"</span>: <span class="t-val">3</span>,</span></div>
         <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-key">"focus"</span>: [</span></div>
         <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Bug Hunting"</span>,</span></div>
         <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Web Pentesting"</span>,</span></div>
@@ -849,7 +1004,7 @@
 
     <div class="skill-card fade-in" style="transition-delay:0.1s">
       <span class="skill-icon">🌐</span>
-      <div class="skill-name">WEB & APPSEC</div>
+      <div class="skill-name">WEB &amp; APPSEC</div>
       <p class="skill-desc">OWASP Top 10, XSS, SSRF, IDOR, server misconfigurations and web pentesting.</p>
       <div class="skill-tags">
         <span class="tag">XSS</span>
@@ -861,7 +1016,7 @@
 
     <div class="skill-card fade-in" style="transition-delay:0.2s">
       <span class="skill-icon">🛠️</span>
-      <div class="skill-name">TOOLS & PLATFORMS</div>
+      <div class="skill-name">TOOLS &amp; PLATFORMS</div>
       <p class="skill-desc">Kali Linux, Burp Suite Pro, PowerShell, Go, and SharpCollection for engagements.</p>
       <div class="skill-tags">
         <span class="tag">Kali Linux</span>
@@ -873,7 +1028,7 @@
 
     <div class="skill-card fade-in" style="transition-delay:0.1s">
       <span class="skill-icon">🎯</span>
-      <div class="skill-name">C2 & PAYLOAD DEV</div>
+      <div class="skill-name">C2 &amp; PAYLOAD DEV</div>
       <p class="skill-desc">Havoc, StarKiller, Mythic, Sliver — encryption + obfuscation payloads, evasion research.</p>
       <div class="skill-tags">
         <span class="tag">Havoc</span>
@@ -896,7 +1051,7 @@
 
     <div class="skill-card fade-in" style="transition-delay:0.3s">
       <span class="skill-icon">📋</span>
-      <div class="skill-name">REPORTING & DOCS</div>
+      <div class="skill-name">REPORTING &amp; DOCS</div>
       <p class="skill-desc">Clear PoCs, responsible disclosure, and structured vulnerability reports.</p>
       <div class="skill-tags">
         <span class="tag">PoC Writing</span>
@@ -943,6 +1098,7 @@
   </div>
 
   <div class="certs-grid">
+
     <div class="cert-card fade-in">
       <div class="cert-badge">🛡️</div>
       <div class="cert-issuer">EC-COUNCIL</div>
@@ -951,7 +1107,7 @@
       <a href="https://drive.google.com/file/d/1M1nCScHO3_2Kq_ANo0TpsD4SkxfJHyv7/view?usp=sharing" target="_blank" class="cert-link">↗ View Certificate</a>
     </div>
 
-    <div class="cert-card fade-in" style="transition-delay:0.15s">
+    <div class="cert-card fade-in" style="transition-delay:0.1s">
       <div class="cert-badge">🎓</div>
       <div class="cert-issuer">ACADEMOR</div>
       <div class="cert-name">Cybersecurity Internship</div>
@@ -959,15 +1115,14 @@
       <a href="https://drive.google.com/file/d/1cuAW47IBvMUGrQ8bFmGRzWbDtjRpwRUi/view?usp=sharing" target="_blank" class="cert-link">↗ View Certificate</a>
     </div>
 
-    <div class="cert-card fade-in" style="transition-delay:0.3s">
+    <div class="cert-card fade-in" style="transition-delay:0.2s">
       <div class="cert-badge">🔒</div>
       <div class="cert-issuer">EC-COUNCIL</div>
       <div class="cert-name">Certified Network Defender (CND)</div>
       <p class="cert-desc">Knowledge of network security, defensive mechanisms, and threat detection — focused on securing enterprise networks through monitoring, incident response, and effective defense strategies.</p>
       <a href="https://drive.google.com/file/d/1zDSrHkbFVDrr6tGaOr6R0R2wxfcvIQzL/view?usp=sharing" target="_blank" class="cert-link">↗ View Certificate</a>
     </div>
-  </div>
-</section>
+
     <div class="cert-card fade-in" style="transition-delay:0.3s">
       <div class="cert-badge">⚡</div>
       <div class="cert-issuer">EC-COUNCIL</div>
@@ -975,13 +1130,41 @@
       <p class="cert-desc">Knowledge of ethical hacking methodologies, penetration testing, and vulnerability assessment — focused on identifying, exploiting, and securing systems through industry-standard offensive security techniques.</p>
       <a href="https://drive.google.com/file/d/1L73GaUNdRzu4Nwi-j8l1iEKMeytGqDoS/view?usp=sharing" target="_blank" class="cert-link">↗ View Certificate</a>
     </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">ACHIEVEMENTS</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="achievement-card fade-in">
+    <!-- Left: Info -->
+    <div>
+      <span class="achievement-trophy">🏆</span>
+      <div class="achievement-event">PRAGYAN 2026 · HACKATHON</div>
+      <h3 class="achievement-title">2nd Place Winner</h3>
+      <div class="achievement-place">🥈 RUNNER-UP</div>
+      <p class="achievement-desc">
+        Secured 2nd place at Pragyan 2026, competing against teams across disciplines.
+        Built and presented a solution under real hackathon conditions — demonstrating
+        teamwork, technical depth, and problem-solving under pressure.
+      </p>
+
+    </div>
+
+    <!-- Photo: add <img src="images/pragyan-2026.jpg" ...> here once uploaded to your repo -->
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">05</span>
+    <span class="section-num">06</span>
     <h2 class="section-title">CONTACT</h2>
     <div class="section-line"></div>
   </div>
@@ -1007,33 +1190,28 @@
       </div>
     </div>
 
-   <form action="https://formspree.io/f/mdkykneo" method="POST">
+    <form action="https://formspree.io/f/mdkykneo" method="POST">
+      <div class="contact-form fade-in" style="transition-delay:0.2s">
+        <div class="form-group">
+          <label class="form-label">YOUR_NAME</label>
+          <input type="text" name="name" class="form-input" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">EMAIL_ADDRESS</label>
+          <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">MESSAGE</label>
+          <textarea name="message" class="form-input" placeholder="Your message here..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start">
+          SEND_MESSAGE
+        </button>
+      </div>
+    </form>
 
-<div class="contact-form fade-in" style="transition-delay:0.2s">
-
-  <div class="form-group">
-    <label class="form-label">YOUR_NAME</label>
-    <input type="text" name="name" class="form-input" placeholder="Enter your name" required />
   </div>
-
-  <div class="form-group">
-    <label class="form-label">EMAIL_ADDRESS</label>
-    <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">MESSAGE</label>
-    <textarea name="message" class="form-input" placeholder="Your message here..." required></textarea>
-  </div>
-
-  <button class="btn btn-primary" style="align-self:flex-start">
-    SEND_MESSAGE
-  </button>
-
-</div>
-</section> 
-
-</form>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -1056,6 +1234,7 @@
     });
   });
 </script>
+
 <!-- Cloudflare Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
 data-cf-beacon='{"token": "9d35226574034eb8ba7017c041380f4b"}'></script>
