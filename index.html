@@ -597,7 +597,10 @@
       position: relative;
       overflow: hidden;
       transition: all 0.3s;
-      max-width: 700px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
     }
 
     .achievement-card::before {
@@ -1143,19 +1146,24 @@
   </div>
 
   <div class="achievement-card fade-in">
-    <!-- Left: Info -->
-    <div>
+
+    <div class="achievement-info">
       <span class="achievement-trophy">🏆</span>
       <div class="achievement-event">PRAGYAN 2026 · HACKATHON</div>
       <h3 class="achievement-title">2nd Place Winner</h3>
       <div class="achievement-place">🥈 RUNNER-UP</div>
       <p class="achievement-desc">
-        Secured 2nd place at Pragyan 2026 by developing and presenting a digital forensics solution, demonstrating practical investigation techniques, analytical thinking, teamwork, and problem-solving under hackathon conditions.
+        Secured 2nd place at Pragyan 2026 by developing and presenting a digital forensics solution,
+        demonstrating practical investigation techniques, analytical thinking, teamwork, and
+        problem-solving under hackathon conditions.
       </p>
-
     </div>
 
-    <img src="images/pragyan-2026.jpg"> 
+    <div class="achievement-photo-wrap">
+      <img src="images/pragyan-2026.jpg" alt="Pragyan 2026 — 2nd Place" class="achievement-photo" />
+      <p class="achievement-photo-caption">// PRAGYAN_2026 · TEAM_PHOTO</p>
+    </div>
+
   </div>
 </section>
 
