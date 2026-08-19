@@ -220,6 +220,11 @@
       letter-spacing: 2px;
       font-weight: bold;
     }
+    .sev-critical {
+      background: rgba(255,45,85,0.18);
+      border: 1px solid rgba(255,45,85,0.6);
+      color: #ff6b6b;
+    }
     .sev-high {
       background: rgba(255,45,85,0.12);
       border: 1px solid rgba(255,45,85,0.4);
@@ -230,10 +235,10 @@
       border: 1px solid rgba(240,192,64,0.4);
       color: var(--accent3);
     }
-    .sev-critical {
-      background: rgba(255,45,85,0.18);
-      border: 1px solid rgba(255,45,85,0.6);
-      color: #ff6b6b;
+    .sev-info {
+      background: rgba(0,255,231,0.07);
+      border: 1px solid rgba(0,255,231,0.25);
+      color: var(--accent);
     }
 
     .finding-body { padding: 32px; }
@@ -372,7 +377,7 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
-    <div class="stat-val">3</div>
+    <div class="stat-val">9</div>
     <div class="stat-lbl">TOTAL FINDINGS</div>
   </div>
   <div class="stat-item">
@@ -384,7 +389,11 @@
     <div class="stat-lbl">HIGH</div>
   </div>
   <div class="stat-item">
-    <div class="stat-val">3</div>
+    <div class="stat-val">6</div>
+    <div class="stat-lbl">MEDIUM</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-val">9</div>
     <div class="stat-lbl">WRITEUPS</div>
   </div>
 </div>
@@ -469,11 +478,173 @@
     </div>
   </div>
 
+  <!-- FINDING 4 -->
+  <div class="finding-card fade-in" style="transition-delay:0.3s">
+    <div class="finding-top">
+      <span class="finding-id">FINDING_004 · SESSION MANAGEMENT</span>
+      <span class="severity sev-medium">MEDIUM</span>
+    </div>
+    <div class="finding-body">
+      <div class="finding-vuln">SESSION FIXATION</div>
+      <h2 class="finding-title">Password Changed — But the Old Session Never Died</h2>
+      <p class="finding-desc">
+        Discovered that a learning platform failed to invalidate existing authenticated sessions
+        after a password change. An attacker holding a stolen session token could maintain
+        full account access even after the victim reset their credentials — and could even
+        lock the legitimate user out by overwriting the password through the still-active session.
+      </p>
+      <div class="finding-tags">
+        <span class="tag-red">Session Fixation</span>
+        <span class="tag">Authentication</span>
+        <span class="tag">Session Lifecycle</span>
+        <span class="tag">Account Takeover</span>
+      </div>
+      <a href="https://medium.com/@syz_/password-changed-but-the-old-session-never-died-cb43f3d5a057" target="_blank" class="writeup-link">
+        ↗ Read Full Write-Up
+      </a>
+    </div>
+  </div>
+
+  <!-- FINDING 5 -->
+  <div class="finding-card fade-in" style="transition-delay:0.35s">
+    <div class="finding-top">
+      <span class="finding-id">FINDING_005 · AUTHENTICATION</span>
+      <span class="severity sev-medium">MEDIUM</span>
+    </div>
+    <div class="finding-body">
+      <div class="finding-vuln">NO RATE LIMITING</div>
+      <h2 class="finding-title">Unlimited Login Attempts — When a Login Page Never Says "Enough"</h2>
+      <p class="finding-desc">
+        Found a healthcare platform login endpoint with no rate limiting, account lockout,
+        CAPTCHA, or throttling of any kind. Over 100 consecutive failed login attempts were
+        processed normally, leaving the endpoint fully exposed to brute-force and
+        credential stuffing attacks.
+      </p>
+      <div class="finding-tags">
+        <span class="tag-red">No Rate Limiting</span>
+        <span class="tag">Brute Force</span>
+        <span class="tag">Credential Stuffing</span>
+        <span class="tag">Authentication</span>
+      </div>
+      <a href="https://medium.com/@syz_/unlimited-login-attempts-when-a-login-page-never-says-enough-0b070624af99" target="_blank" class="writeup-link">
+        ↗ Read Full Write-Up
+      </a>
+    </div>
+  </div>
+
+  <!-- FINDING 6 -->
+  <div class="finding-card fade-in" style="transition-delay:0.4s">
+    <div class="finding-top">
+      <span class="finding-id">FINDING_006 · CLOUD MISCONFIGURATION</span>
+      <span class="severity sev-medium">MEDIUM</span>
+    </div>
+    <div class="finding-body">
+      <div class="finding-vuln">S3 BUCKET EXPOSURE</div>
+      <h2 class="finding-title">Publicly Accessible Storage Bucket — Unauthenticated File Enumeration</h2>
+      <p class="finding-desc">
+        While exploring a travel platform's staging subdomain, discovered a publicly accessible
+        cloud storage bucket returning an unauthenticated XML listing of its contents. Object names,
+        upload timestamps, file sizes, and stored assets were all enumerable without any credentials —
+        exposing internal naming conventions and deployment structure.
+      </p>
+      <div class="finding-tags">
+        <span class="tag-red">Cloud Misconfiguration</span>
+        <span class="tag">S3 Bucket</span>
+        <span class="tag">Information Disclosure</span>
+        <span class="tag">Recon</span>
+      </div>
+      <a href="https://medium.com/@syz_/sometimes-a-bucket-tells-you-more-than-it-should-b9a3bd226429" target="_blank" class="writeup-link">
+        ↗ Read Full Write-Up
+      </a>
+    </div>
+  </div>
+
+  <!-- FINDING 7 -->
+  <div class="finding-card fade-in" style="transition-delay:0.45s">
+    <div class="finding-top">
+      <span class="finding-id">FINDING_007 · INFORMATION DISCLOSURE</span>
+      <span class="severity sev-info">INFORMATIVE</span>
+    </div>
+    <div class="finding-body">
+      <div class="finding-vuln">CONFIG EXPOSURE</div>
+      <h2 class="finding-title">Public Bitbucket Pipeline Config — Internal Infrastructure Blueprint</h2>
+      <p class="finding-desc">
+        Discovered a publicly accessible Bitbucket pipeline configuration file on a travel platform
+        with no authentication required. The file revealed deployment workflows, SSH-based deployment
+        processes, internal directory layouts, and operational infrastructure details — providing
+        an attacker with a detailed map of the backend environment without touching any exploit.
+      </p>
+      <div class="finding-tags">
+        <span class="tag">Information Disclosure</span>
+        <span class="tag">Pipeline Config</span>
+        <span class="tag">Recon</span>
+        <span class="tag">Infrastructure</span>
+      </div>
+      <a href="https://medium.com/@syz_/sometimes-the-best-recon-is-already-public-d87500833ad2" target="_blank" class="writeup-link">
+        ↗ Read Full Write-Up
+      </a>
+    </div>
+  </div>
+
+  <!-- FINDING 8 -->
+  <div class="finding-card fade-in" style="transition-delay:0.5s">
+    <div class="finding-top">
+      <span class="finding-id">FINDING_008 · API SECURITY</span>
+      <span class="severity sev-medium">MEDIUM</span>
+    </div>
+    <div class="finding-body">
+      <div class="finding-vuln">GRAPHQL BATCHING</div>
+      <h2 class="finding-title">GraphQL Query Batching — One Request Doing the Work of Hundreds</h2>
+      <p class="finding-desc">
+        Identified a GraphQL endpoint with no query complexity limits, depth restrictions,
+        or execution throttling. By batching hundreds of identical aliased operations into a
+        single HTTP request, the server could be forced to perform a disproportionate amount
+        of work — a potential denial-of-service vector requiring zero special privileges.
+      </p>
+      <div class="finding-tags">
+        <span class="tag-red">DoS</span>
+        <span class="tag">GraphQL</span>
+        <span class="tag">Query Batching</span>
+        <span class="tag">No Rate Limiting</span>
+      </div>
+      <a href="https://medium.com/@syz_/can-one-graphql-query-do-the-work-of-hundreds-154356a8fcdd" target="_blank" class="writeup-link">
+        ↗ Read Full Write-Up
+      </a>
+    </div>
+  </div>
+
+  <!-- FINDING 9 -->
+  <div class="finding-card fade-in" style="transition-delay:0.55s">
+    <div class="finding-top">
+      <span class="finding-id">FINDING_009 · AI / LLM SECURITY</span>
+      <span class="severity sev-medium">MEDIUM</span>
+    </div>
+    <div class="finding-body">
+      <div class="finding-vuln">PROMPT INJECTION</div>
+      <h2 class="finding-title">AI Assistant Reveals Its Own System Prompt — Prompt Injection</h2>
+      <p class="finding-desc">
+        Using a single natural-language prompt against an AI chatbot embedded in a tax-filing
+        platform, extracted the full system prompt including internal tool names, ticket escalation
+        workflows, support routing logic, promotional instructions, and hidden behavioral rules —
+        all without authentication bypass or technical exploits.
+      </p>
+      <div class="finding-tags">
+        <span class="tag-red">Prompt Injection</span>
+        <span class="tag">LLM Security</span>
+        <span class="tag">System Prompt Leak</span>
+        <span class="tag">Information Disclosure</span>
+      </div>
+      <a href="https://medium.com/@syz_/when-an-ai-assistant-revealed-its-own-instructions-8ca9dc22e999" target="_blank" class="writeup-link">
+        ↗ Read Full Write-Up
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-copy">© 2025 Arpit Toppo — All Rights Reserved</p>
+  <p class="footer-copy">© 2026 Arpit Toppo — All Rights Reserved</p>
 </footer>
 
 <script>
